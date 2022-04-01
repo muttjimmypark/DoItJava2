@@ -1,0 +1,67 @@
+1. Array
+    A. fixed-length
+    B. 물리적, 논리적 구조가 동일 -->> index 연산이 가능
+    C. 연속적인 자료형 -->> 중간이 빌 수가 없음
+    D. in,out,insert,delete 연산이 원소갯수에 종속적이다 -->> O(n)
+    E. 배열을 구현해놓은 객체 ArrayList가 있어서 보통 그걸 활용한다
+
+2. Linked List
+    A. Data영역과 Link(다음 데이터를 가리키는)영역으로 구성되어 있음
+    B. 물리-논리 구조가 다르다
+    C. 원소의 중간삽입, 원소를 대체 하기에 용이
+        (비용이 훨씬 저렴 <<-->> Array는 새 공간을 만들어서 옮겨넣는 방식을)
+
+3. Stack (Array or LinkedList 로 구현 가능)
+    A. LIFO - top에서만 자료가 in/out  : push(), pop()
+        1) ArrayList Function으로 구현한다면
+            add(size()-1) / remove(size()-1)
+        2) peek() : 자료구조형에서 꺼내진 않고 내용물만 확인하는 함수
+
+4. Queue (Array or LinkedList 로 구현 가능)
+    A. FIFO - front와 rear의 위치를 가짐 : enQueue(), deQueue()
+        1) ArrayList Function으로 구현한다면
+            add(size()-1) / remove(0)
+
+5. Tree : 궁극적으로 정렬을 뽑아내기 위한 구조
+    A. Binary Tree (이진트리) : 자식노드가 최대 2개인 트리
+        <Parent, LeftChild, RightChild>
+        1) Binary Search Tree
+            - 내 LeftChild는 무조건 나보다 작은 값
+            - 중복 허용 x
+            - 트리가 균형잡혀있다면 log2 n 시간 소요
+            A) Make Tree
+            B) in-order traversal(왼쪽-나-오른쪽 순회)로
+             추출하면 오름차순 정렬 결과물을 얻을 수 있다
+    B. AVL, Red Black 등 향상된 트리 형태도 있다
+
+6. Hashing : 검색을 위한 자료구조
+    ex> 좌석은 0~99, 사람은 1~300
+        1) 사람.55 -->> 55 % 100 -->> 좌석.55
+        2) 사람.103 -->> 103 % 100 -->> 좌석.3
+        // 가진 값에 규칙성을 적용하여 새로운 값을 부여한다
+        3) 사람.203 -->> 203 % 100 -->> 좌석.3
+        // 콜리전 : 여러 중복처리방법을 정의할수 있다 (바로옆에 앉힌다던지)
+    A. 좌석 = hashTable, % = hashFunction
+    B. key를 hash에 넣어 index를 뽑아낸다 : O(1) 이므로 빠르다
+
+
+***
+# 컬렉션 프레임워크 : 자료구조 구현해놓은 라이브러리 (java.util.*)
+1. Collection : 단일 객체
+    A. List : 내 앞도 하나, 뒤도 하나 - 쭉 선형 구조 - 순서가 있다
+        1) ArrayList
+        2) Vector
+            - 멀티스레드 작업 지원을 위해 모든 메서드 요소가 synchronized로 구성되어있다
+            - 셰어링 변수 하나에 접근 사용하는동안 독점점유를 한다던지 발생하는데,
+            - 단일스레드작업에서는 되려 낭비가 될 수 있다 (웹 구현에서는 웹서버가 멀티스레드를 지원하므로 신경써서 개발할 필요 x)
+        3) LinkedList
+    B. Set : 집합 - 중복원소가 없다 -->> 순서가 없으니 .get(i) 메서드도 없다
+        1) HashSet
+        2) TreeSet
+2. Map : 쌍 객체 (ex> 취미:음악감상, 특기:컴퓨터)
+    A. HashTable
+        1) Properties : key-value Pair로 메모리상에 저장할수 있는 기능 - I/O와 연관됨
+    B. HashMap
+    C. TreeMap
+
+1-1. Iterator : 모든 자료구조들을 for문 돌리듯이 순회할수 있는 장치
