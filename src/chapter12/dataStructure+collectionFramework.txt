@@ -59,9 +59,9 @@
         1) HashSet
         2) TreeSet
 2. Map : 쌍 객체 (ex> 취미:음악감상, 특기:컴퓨터)
-    A. HashTable
+    A. HashTable - 동기화가 구현된 HashMap
         1) Properties : key-value Pair로 메모리상에 저장할수 있는 기능 - I/O와 연관됨
-    B. HashMap
-    C. TreeMap
+    B. HashMap - HashTable와 동일하며 일반적으로 쓰임
+    C. TreeMap - tree구조니까 key로 사용되는 Class에 comparable, comparator 구현필요
 
 1-1. Iterator : 모든 자료구조들을 for문 돌리듯이 순회할수 있는 장치

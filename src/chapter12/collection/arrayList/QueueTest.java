@@ -13,7 +13,7 @@ class MyQueue {
     public String deQueue() {
         int len = arrayQueue.size();
 
-        if(len == 0) {
+        if (len == 0) {
             System.out.println("큐가 비었습니다.");
             return null;
         }
@@ -21,6 +21,7 @@ class MyQueue {
         return arrayQueue.remove(0);
     }
 }
+
 public class QueueTest {
     public static void main(String[] args) {
 
